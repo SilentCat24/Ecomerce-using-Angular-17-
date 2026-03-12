@@ -1,0 +1,89 @@
+<div class="products-page">
+      <div class="container">
+        <div class="layout">
+          <!-- Sidebar Filters -->
+          <aside class="sidebar">
+            <h3>Filters</h3>
+            <div class="filter-group">
+              <label>Search</label>
+              <input type="text" [(ngModel)]="filters.keyword" placeholder="Search products..."
+                (input)="onSearch()" class="input">
+            </div>
+            <div class="filter-group">
+              <label>Category</label>
+              <select [(ngModel)]="filters.category" (change)="applyFilters()" class="input">
+                <option value="">All Categories</option>
+                @for (cat of categories; track cat) {
+                  <option [value]="cat">{{ cat }}</option>
+                }
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>Sort By</label>
+              <select [(ngModel)]="filters.sort" (change)="applyFilters()" class="input">
+                <option value="-createdAt">Newest First</option>
+                <option value="price">Price: Low to High</option>
+                <option value="-price">Price: High to Low</option>
+                <option value="-rating">Top Rated</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>Price Range</label>
+              <div class="price-inputs">
+                <input type="number" [(ngModel)]="filters.minPrice" placeholder="Min"
+                  (change)="applyFilters()" class="input input-sm">
+                <span>–</span>
+                <input type="number" [(ngModel)]="filters.maxPrice" placeholder="Max"
+                  (change)="applyFilters()" class="input input-sm">
+              </div>
+            </div>
+            <div class="filter-group">
+              <label>Min Rating</label>
+              <div class="rating-btns">
+                @for (r of [4,3,2,1]; track r) {
+                  <button [class.active]="filters.rating === r"
+                    (click)="setRating(r)">{{ '★'.repeat(r) }}</button>
+                }
+              </div>
+            </div>
+            <button class="btn-reset" (click)="resetFilters()">Reset Filters</button>
+          </aside>
+
+
+          <main class="main-content">
+            <div class="toolbar">
+              <span class="total-count">{{ total }} products found</span>
+            </div>
+
+            @if (loading) {
+              <div class="products-grid">
+                @for (n of [1,2,3,4,5,6]; track n) {
+                  <div class="skeleton"></div>
+                }
+              </div>
+            } @else if (products.length === 0) {
+              <div class="empty-state">
+                <span>🔍</span>
+                <p>No products found. Try adjusting your filters.</p>
+              </div>
+            } @else {
+              <div class="products-grid">
+                @for (product of products; track product._id) {
+                  <app-product-card [product]="product" />
+                }
+              </div>
+          
+              @if (pages > 1) {
+                <div class="pagination">
+                  <button [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">‹</button>
+                  @for (p of pageNumbers; track p) {
+                    <button [class.active]="p === currentPage" (click)="goToPage(p)">{{ p }}</button>
+                  }
+                  <button [disabled]="currentPage === pages" (click)="goToPage(currentPage + 1)">›</button>
+                </div>
+              }
+            }
+          </main>
+        </div>
+      </div>
+    </div>

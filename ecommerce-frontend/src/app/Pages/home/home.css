@@ -1,0 +1,84 @@
+.home { overflow: hidden; }
+    /* Hero */
+    .hero {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 540px; max-width: 1280px;
+      margin: 0 auto; padding: 3rem 1.5rem; gap: 2rem; align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-block; background: #fef3c7; color: #92400e;
+      padding: .3rem .8rem; border-radius: 20px; font-size: .8rem; font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800;
+      line-height: 1.1; color: #111; margin-bottom: 1rem;
+    }
+    .hero-title em { color: #7c3aed; font-style: normal; }
+    .hero-sub { color: #6b7280; font-size: 1.1rem; margin-bottom: 2rem; }
+    .hero-actions { display: flex; gap: 1rem; margin-bottom: 2.5rem; }
+    .btn-primary {
+      padding: .75rem 1.75rem; background: #111; color: #fff;
+      border-radius: 10px; text-decoration: none; font-weight: 600;
+      transition: background .2s;
+    }
+    .btn-primary:hover { background: #333; }
+    .btn-ghost {
+      padding: .75rem 1.75rem; border: 2px solid #e5e7eb; color: #374151;
+      border-radius: 10px; text-decoration: none; font-weight: 600;
+      transition: border-color .2s;
+    }
+    .btn-ghost:hover { border-color: #9ca3af; }
+    .hero-stats { display: flex; gap: 2rem; }
+    .stat { display: flex; flex-direction: column; }
+    .stat-num { font-size: 1.5rem; font-weight: 800; color: #111; }
+    .stat span:last-child { font-size: .8rem; color: #9ca3af; }
+    .hero-visual { position: relative; }
+    .hero-blob {
+      position: absolute; width: 400px; height: 400px;
+      background: linear-gradient(135deg, #ddd6fe 0%, #fce7f3 100%);
+      border-radius: 50% 30% 70% 40%; top: -30px; right: -20px; z-index: 0;
+    }
+    .hero-img {
+      position: relative; z-index: 1; width: 100%;
+      border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,.15);
+    }
+    /* Sections */
+    .section { padding: 4rem 0; }
+    .bg-gray { background: #f9fafb; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    .section-title { font-size: 1.75rem; font-weight: 700; color: #111; margin-bottom: 1.5rem; }
+    .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+    .see-all { color: #7c3aed; text-decoration: none; font-weight: 500; }
+    /* Categories */
+    .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; }
+    .category-card {
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      padding: 1.5rem 1rem; background: #fff; border-radius: 14px;
+      border: 1px solid #e5e7eb; text-decoration: none; color: #374151;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .category-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.08); }
+    .cat-icon { font-size: 2rem; }
+    .cat-name { font-size: .875rem; font-weight: 600; }
+    /* Products Grid */
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; }
+    .skeleton-card {
+      height: 380px; background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%; animation: shimmer 1.5s infinite;
+      border-radius: 14px;
+    }
+    @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+    /* Benefits */
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+    .benefit-card {
+      text-align: center; padding: 2rem 1.5rem;
+      background: #fff; border-radius: 14px; border: 1px solid #e5e7eb;
+    }
+    .benefit-icon { font-size: 2.5rem; display: block; margin-bottom: .75rem; }
+    .benefit-card h3 { font-weight: 700; color: #111; margin-bottom: .5rem; }
+    .benefit-card p { color: #6b7280; font-size: .875rem; }
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+    }

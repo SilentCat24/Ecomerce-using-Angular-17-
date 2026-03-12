@@ -1,0 +1,52 @@
+.products-page { padding: 2rem 0; min-height: 80vh; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    .layout { display: grid; grid-template-columns: 260px 1fr; gap: 2rem; }
+    .sidebar {
+      background: #fff; border: 1px solid #e5e7eb;
+      border-radius: 14px; padding: 1.5rem; height: fit-content;
+      position: sticky; top: 80px;
+    }
+    .sidebar h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; }
+    .filter-group { margin-bottom: 1.25rem; }
+    .filter-group label { display: block; font-size: .8rem; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .5rem; }
+    .input {
+      width: 100%; padding: .5rem .75rem; border: 1px solid #e5e7eb;
+      border-radius: 8px; font-size: .9rem; outline: none;
+    }
+    .input:focus { border-color: #7c3aed; }
+    .input-sm { width: calc(50% - 10px); }
+    .price-inputs { display: flex; align-items: center; gap: .5rem; }
+    .rating-btns { display: flex; flex-direction: column; gap: .3rem; }
+    .rating-btns button {
+      text-align: left; padding: .4rem .6rem; border-radius: 6px;
+      border: 1px solid #e5e7eb; background: #fff; cursor: pointer;
+      color: #f59e0b; font-size: .9rem; transition: background .15s;
+    }
+    .rating-btns button.active { background: #fef3c7; border-color: #f59e0b; }
+    .btn-reset {
+      width: 100%; padding: .5rem; background: #f3f4f6; border: none;
+      border-radius: 8px; cursor: pointer; font-size: .875rem; color: #374151;
+      margin-top: .5rem;
+    }
+    .toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+    .total-count { color: #6b7280; font-size: .9rem; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
+    .skeleton {
+      height: 360px; background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+      background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 14px;
+    }
+    @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+    .empty-state { text-align: center; padding: 4rem; color: #9ca3af; }
+    .empty-state span { font-size: 3rem; display: block; margin-bottom: 1rem; }
+    .pagination { display: flex; gap: .5rem; justify-content: center; margin-top: 2.5rem; }
+    .pagination button {
+      width: 38px; height: 38px; border-radius: 8px;
+      border: 1px solid #e5e7eb; background: #fff; cursor: pointer;
+      font-weight: 500; transition: background .15s;
+    }
+    .pagination button.active { background: #111; color: #fff; border-color: #111; }
+    .pagination button:disabled { opacity: .4; cursor: not-allowed; }
+    @media (max-width: 768px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+    }

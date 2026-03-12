@@ -1,0 +1,73 @@
+ <div class="home">
+    
+      <section class="hero">
+        <div class="hero-content">
+          <span class="hero-eyebrow">New Arrivals 2025</span>
+          <h1 class="hero-title">Discover Products<br>You'll <em>Love</em></h1>
+          <p class="hero-sub">Curated selection of premium goods delivered to your door.</p>
+          <div class="hero-actions">
+            <a routerLink="/products" class="btn-primary">Shop Now →</a>
+            <a routerLink="/products?featured=true" class="btn-ghost">View Featured</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><span class="stat-num">10K+</span><span>Products</span></div>
+            <div class="stat"><span class="stat-num">99%</span><span>Satisfaction</span></div>
+            <div class="stat"><span class="stat-num">Free</span><span>Shipping $100+</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-blob"></div>
+          <img src="https://picsum.photos/seed/hero-shop/600/500" alt="Shop" class="hero-img">
+        </div>
+      </section>
+
+       <section class="section">
+        <div class="container">
+          <h2 class="section-title">Shop by Category</h2>
+          <div class="categories-grid">
+            @for (cat of categories; track cat.name) {
+              <a [routerLink]="['/products']" [queryParams]="{category: cat.name}" class="category-card">
+                <span class="cat-icon">{{ cat.icon }}</span>
+                <span class="cat-name">{{ cat.name }}</span>
+              </a>
+            }
+          </div>
+        </div>
+      </section>
+
+          <section class="section bg-gray">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Featured Products</h2>
+            <a routerLink="/products" class="see-all">See all →</a>
+          </div>
+          @if (loading) {
+            <div class="products-grid">
+              @for (n of [1,2,3,4]; track n) {
+                <div class="skeleton-card"></div>
+              }
+            </div>
+          } @else {
+            <div class="products-grid">
+              @for (product of featured; track product._id) {
+                <app-product-card [product]="product" />
+              }
+            </div>
+          }
+        </div>
+      </section>
+
+          <section class="section">
+        <div class="container">
+          <div class="benefits-grid">
+            @for (b of benefits; track b.title) {
+              <div class="benefit-card">
+                <span class="benefit-icon">{{ b.icon }}</span>
+                <h3>{{ b.title }}</h3>
+                <p>{{ b.desc }}</p>
+              </div>
+            }
+          </div>
+        </div>
+      </section>
+    </div>
